@@ -1,6 +1,6 @@
 <footer class="main-footer">
 	
-	<strong>Copyright &copy; 2017 <a href="https://www.tutorialesatualcance.com" target="_blank">Tutoriales a tu Alcance</a>.</strong>
+	<strong>ALEX DEVELOPER &copy; 2018  <a href="https://www.github.com/alexisdavid" target="_blank">  ALEX DEVELOPER</a>.</strong>
 
 	Todos los derechos reservados.
 

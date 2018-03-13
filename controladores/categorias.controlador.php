@@ -10,8 +10,9 @@ class ControladorCategorias{
 
 		if(isset($_POST["nuevaCategoria"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaCategoria"])){
-
+			
+			 if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ._ ]+$/', $_POST["nuevaCategoria"])){
+			 	
 				$tabla = "categorias";
 
 				$datos = $_POST["nuevaCategoria"];
