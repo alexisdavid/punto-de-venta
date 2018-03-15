@@ -98,6 +98,35 @@ MODAL AGREGAR producto
 
           <div class="box-body">
 
+             <!-- ENTRADA PARA SELECCIONAR CATEGORIA -->
+
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+
+                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" required>
+                  
+                  <option value="">Selecionar categoria</option>
+                    <?php
+                      $item = null;
+                      $valor = null;
+                      $categorias = ControladorCategorias::ctrMostrarCategorias($item,$valor);
+                      foreach ($categorias as $key => $value) {
+                        echo ' <option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                      }
+
+                    ?>
+                  
+                  
+
+                </select>
+
+              </div>
+
+            </div>
+
             <!-- ENTRADA PARA EL CODIGO -->
             
             <div class="form-group">
@@ -106,7 +135,7 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-code"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo" required>
+                <input type="text" class="form-control input-lg" id="nuevoCodigo" name="nuevoCodigo" placeholder="Ingresar Codigo" required readonly>
 
               </div>
 
@@ -127,29 +156,7 @@ MODAL AGREGAR producto
             </div>
 
 
-            <!-- ENTRADA PARA SELECCIONAR CATEGORIA -->
-
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
-
-                <select class="form-control input-lg" name="nuevaCategoria">
-                  
-                  <option value="">Selecionar categoria</option>
-
-                  <option value="silenciadores">silenciadores</option>
-
-                  <option value="catalizadores">catalizadores</option>
-
-                  <option value="flexibles">flexibles</option>
-
-                </select>
-
-              </div>
-
-            </div>
+           
              <!-- ENTRADA PARA STOCK-->
 
              <div class="form-group">
@@ -171,7 +178,7 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-code"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigoPr"  placeholder="codigo proveedor" required>
+                <input type="text" class="form-control input-lg" id="nuevoCodigoPr" name="nuevoCodigoPr"  placeholder="codigo proveedor" required>
 
               </div>
 
@@ -185,7 +192,7 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span> 
 
-                <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" placeholder="precio de compra">
+                <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" min="0" placeholder="precio de compra">
               </div>
               <br>
               
@@ -198,7 +205,7 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
 
-                <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" placeholder="precio de venta">
+                <input type="number" class="form-control input-lg" id="nuevoPrecioVenta" name="nuevoPrecioVenta" min="0" placeholder="precio de venta">
               </div>
               <br>
               <!-- checkbox para porcentaje -->
@@ -258,6 +265,12 @@ MODAL AGREGAR producto
         </div>
 
       </form>
+      <?php
+      $crearProducto = new ControladorProductos();
+      $crearProducto -> ctrCrearProducto();
+
+
+      ?>
 
     </div>
 
