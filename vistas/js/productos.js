@@ -1,54 +1,3 @@
-
-/*=============================================
-SUBIENDO LA FOTO DEL PRODUCTO
-=============================================*/
-
-$(".nuevaImagen").change(function(){
-	var imagen = this.files[0];
-	
-	
-	/*=============================================
-  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
-  	=============================================*/
-
-  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
-
-  		$(".nuevaImagen").val("");
-
-  		 swal({
-		      title: "Error al subir la imagen",
-		      text: "¡La imagen debe estar en formato JPG o PNG!",
-		      type: "error",
-		      confirmButtonText: "¡Cerrar!"
-		    });
-
-  	}else if(imagen["size"] > 2000000){
-
-  		$(".nuevaImagen").val("");
-
-  		 swal({
-		      title: "Error al subir la imagen",
-		      text: "¡La imagen no debe pesar más de 2MB!",
-		      type: "error",
-		      confirmButtonText: "¡Cerrar!"
-		    });
-
-  	}else{
-
-  		var datosImagen = new FileReader;
-  		datosImagen.readAsDataURL(imagen);
-
-  		$(datosImagen).on("load", function(event){
-
-  			var rutaImagen = event.target.result;
-
-  			$(".previsualizar").attr("src", rutaImagen);
-
-  		})
-
-  	}
-})
-
 /*=============================================
 CARGAR LA TABLA DINÁMICA
 =============================================*/
@@ -61,8 +10,7 @@ var table = $('.tablaProductos').DataTable({
 		{
 			"targets": -10,
 			 "data": null,
-			
-			 "defaultContent": '<img src="" class="img-thumbnail imgTabla" width="40px">'
+			 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
 
 		},
 
@@ -104,6 +52,7 @@ var table = $('.tablaProductos').DataTable({
 
 
 })
+
 /*=============================================
 ACTIVAR LOS BOTONES CON LOS ID CORRESPONDIENTES
 =============================================*/
@@ -119,12 +68,15 @@ $('.tablaProductos tbody').on( 'click', 'button', function () {
 		var data = table.row( $(this).parents('tbody tr ul li') ).data();		
 
 	}
-	
-	$(this).attr("idProducto", data[9])	
+	// console.log(data);
+	$(this).attr("idProducto", data[10])	
 	$(this).attr("codigo", data[2])	
 	$(this).attr("imagen", data[1])	
 
+
+
 } );
+
 /*=============================================
 FUNCIÓN PARA CARGAR LAS IMÁGENES
 =============================================*/
@@ -136,13 +88,13 @@ function cargarImagenes(){
 	for(var i = 0; i < imgTabla.length; i ++){
 
 		var data = table.row( $(imgTabla[i]).parents("tr")).data();	
-		console.log("data",data);
 
 		$(imgTabla[i]).attr("src", data[1]);
 
 	}
 
 }
+
 /*=============================================
 CARGAMOS LAS IMÁGENES CUANDO ENTRAMOS A LA PÁGINA POR PRIMERA VEZ
 =============================================*/
@@ -295,8 +247,160 @@ $(".porcentaje").on("ifChecked",function(){
 
 	$("#nuevoPrecioVenta").prop("readonly",true);
 	$("#editarPrecioVenta").prop("readonly",true);
-	
 
 })
 
+/*=============================================
+SUBIENDO LA FOTO DEL PRODUCTO
+=============================================*/
 
+$(".nuevaImagen").change(function(){
+
+	var imagen = this.files[0];
+	
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
+
+  	if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
+
+  		$(".nuevaImagen").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else if(imagen["size"] > 2000000){
+
+  		$(".nuevaImagen").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+
+  		var datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagen);
+
+  		$(datosImagen).on("load", function(event){
+
+  			var rutaImagen = event.target.result;
+
+  			$(".previsualizar").attr("src", rutaImagen);
+
+  		})
+
+  	}
+})
+
+/*=============================================
+EDITAR PRODUCTO
+=============================================*/
+
+$(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
+
+	var idProducto = $(this).attr("idProducto");
+	
+	var datos = new FormData();
+    datos.append("idProducto", idProducto);
+
+     $.ajax({
+
+      url:"ajax/productos.ajax.php",
+      method: "POST",
+      data: datos,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType:"json",
+      success:function(respuesta){
+      
+          
+          var datosCategoria = new FormData();
+          datosCategoria.append("idCategoria",respuesta["id_categoria"]);
+
+           $.ajax({
+
+              url:"ajax/categorias.ajax.php",
+              method: "POST",
+              data: datosCategoria,
+              cache: false,
+              contentType: false,
+              processData: false,
+              dataType:"json",
+              success:function(respuesta){
+              	
+              	console.log(respuesta);
+                  
+                  $("#editarCategoria").val(respuesta["id"]);
+                  $("#editarCategoria").html(respuesta["categoria"]);
+
+              }
+
+          })
+
+
+           $("#editarCodigo").val(respuesta["codigo"]);
+
+           $("#editarDescripcion").val(respuesta["descripcion"]);
+
+           $("#editarStock").val(respuesta["stock"]);
+         
+            $("#nuevoProveedor").val(respuesta["codigo_proveedor"]);
+           $("#editarPrecioCompra").val(respuesta["precio_compra"]);
+
+           $("#editarPrecioVenta").val(respuesta["precio_venta"]);
+
+           if(respuesta["imagen"] != ""){
+
+           	$("#imagenActual").val(respuesta["imagen"]);
+
+           	$(".previsualizar").attr("src",  respuesta["imagen"]);
+
+           }
+
+      }
+
+  })
+
+})
+
+/*=============================================
+ELIMINAR PRODUCTO
+=============================================*/
+
+$(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function(){
+
+	var idProducto = $(this).attr("idProducto");
+	var codigo = $(this).attr("codigo");
+	var imagen = $(this).attr("imagen");
+	
+	swal({
+
+		title: '¿Está seguro de borrar el producto?',
+		text: "¡Si no lo está puede cancelar la accíón!",
+		type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar producto!'
+        }).then(function(result){
+        if (result.value) {
+
+        	window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
+
+        }
+
+
+	})
+
+})
+	

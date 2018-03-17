@@ -58,8 +58,7 @@ class TablaProductos{
 			      "'.$productos[count($productos)-1]["descripcion"].'",
 			      "'.$categorias["categoria"].'",
 			      "'.$productos[count($productos)-1]["stock"].'",
-			      "'.$productos[count($productos)-1]["codigo_proveedor"].'",
-
+			      "'.$productos[$i]["codigo_proveedor"].'",
 			      "$ '.number_format($productos[count($productos)-1]["precio_compra"],2).'",
 			      "$ '.number_format($productos[count($productos)-1]["precio_venta"],2).'",
 			      "'.$productos[count($productos)-1]["fecha"].'",
@@ -79,5 +78,8 @@ ACTIVAR TABLA DE PRODUCTOS
 =============================================*/ 
 $activar = new TablaProductos();
 $activar -> mostrarTabla();
+
+
+
 
 

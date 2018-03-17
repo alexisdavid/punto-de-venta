@@ -1,8 +1,8 @@
 <footer class="main-footer">
 	
-	<strong>ALEX DEVELOPER &copy; 2018  <a href="https://www.github.com/alexisdavid" target="_blank">  ALEX DEVELOPER</a>.</strong>
+	<strong>Copyright &copy; 201 <a href="https://github.com/alexisdavid" target="_blank">HOENZ SOFTWARE</a>Todos los derechos reservados.</strong>
 
-	Todos los derechos reservados.
+	
 
 
 </footer>

@@ -49,7 +49,9 @@
 
 					if($_SESSION["foto"] != ""){
 
-						echo '<img src="'.$_SESSION["foto"].'" class="user-image">';
+
+
+					echo '<img src="'.$_SESSION["foto"].'" class="user-image">'; 
 
 					}else{
 
@@ -67,11 +69,11 @@
 
 					<!-- Dropdown-toggle -->
 
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.9);">
 						
 						<li class="user-body">
 							
-							<div class="pull-right">
+							<div class="pull-right"  >
 								
 								<a href="salir" class="btn btn-default btn-flat">Salir</a>
 

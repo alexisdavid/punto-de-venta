@@ -4,7 +4,7 @@
     
     <h1>
       
-      Catalogo de Productos
+      Administrar productos
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar Producto</li>
+      <li class="active">Administrar productos</li>
     
     </ol>
 
@@ -26,7 +26,7 @@
   
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
           
-          Agregar Producto
+          Agregar producto
 
         </button>
 
@@ -40,16 +40,15 @@
          
          <tr>
            
-          <th style="width:10px">#</th>
+           <th style="width:10px">#</th>
            <th>Imagen</th>
-           <th>Codigo</th>
-           <th>Descripcion</th>
-            <th>Categoria</th>
-           <th>Existencias</th>
-           <th>Codigo proveedor</th>
-           <th>Precio compra</th>
-           <th>Precio Venta</th>
-           <th>Fecha</th>
+           <th>Código</th>
+           <th>Descripción</th>
+           <th>Categoría</th>
+           <th>Stock</th>
+           <th>Precio de compra</th>
+           <th>Precio de venta</th>
+           <th>Agregado</th>
            <th>Acciones</th>
 
          </tr> 
@@ -61,13 +60,12 @@
           <tr>
             <td>1</td>
             <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>101</td>
-            <td>Lorem itsum dolor amet</td>
-            <td>silenciadores universales</td>
+            <td>0001</td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>Lorem Ipsum</td>
             <td>20</td>
-            <td>12we3</td>
-            <td>123</td>
-            <td>134</td>
+            <td>$ 5.00</td>
+            <td>$ 10.00</td>
             <td>2017-12-11 12:05:32</td>
             <td>
 
@@ -80,16 +78,43 @@
               </div>  
 
             </td>
+
+          </tr>
+
+           <tr>
+
+            <td>1</td>
+            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+            <td>0001</td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>Lorem Ipsum</td>
+            <td>20</td>
+            <td>$ 5.00</td>
+            <td>$ 10.00</td>
+            <td>2017-12-11 12:05:32</td>
+            <td>
+
+              <div class="btn-group">
+                  
+                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+
+                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+              </div>  
+
+            </td>
+
+          </tr>
+
           <tr>
             <td>1</td>
             <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>101</td>
-            <td>Lorem itsum dolor amet</td>
-            <td>silenciadores universales</td>
+            <td>0001</td>
+            <td>Lorem ipsum dolor sit amet</td>
+            <td>Lorem Ipsum</td>
             <td>20</td>
-            <td>12we3</td>
-            <td>123</td>
-            <td>134</td>
+            <td>$ 5.00</td>
+            <td>$ 10.00</td>
             <td>2017-12-11 12:05:32</td>
             <td>
 
@@ -102,30 +127,10 @@
               </div>  
 
             </td>
-            <tr>
-            <td>1</td>
-            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>101</td>
-            <td>Lorem itsum dolor amet</td>
-            <td>silenciadores universales</td>
-            <td>20</td>
-            <td>12we3</td>
-            <td>123</td>
-            <td>134</td>
-            <td>2017-12-11 12:05:32</td>
-            <td>
 
-              <div class="btn-group">
-                  
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-              </div>  
-
-            </td>
-         
           </tr>
+
+
 
         </tbody>
 
@@ -140,7 +145,7 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR producto
+MODAL AGREGAR PRODUCTO
 ======================================-->
 
 <div id="modalAgregarProducto" class="modal fade" role="dialog">
@@ -159,7 +164,7 @@ MODAL AGREGAR producto
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar Producto</h4>
+          <h4 class="modal-title">Agregar producto</h4>
 
         </div>
 
@@ -171,7 +176,7 @@ MODAL AGREGAR producto
 
           <div class="box-body">
 
-            <!-- ENTRADA PARA EL CODIGO -->
+            <!-- ENTRADA PARA EL CÓDIGO -->
             
             <div class="form-group">
               
@@ -179,13 +184,13 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-code"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar Codigo" required>
+                <input type="text" class="form-control input-lg" name="nuevoCodigo" placeholder="Ingresar código" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA LA DESCRIPCION-->
+            <!-- ENTRADA PARA LA DESCRIPCIÓN -->
 
              <div class="form-group">
               
@@ -193,14 +198,13 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar Descripcion" required>
+                <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresar descripción" required>
 
               </div>
 
             </div>
 
-
-            <!-- ENTRADA PARA SELECCIONAR CATEGORIA -->
+            <!-- ENTRADA PARA SELECCIONAR CATEGORÍA -->
 
             <div class="form-group">
               
@@ -210,20 +214,21 @@ MODAL AGREGAR producto
 
                 <select class="form-control input-lg" name="nuevaCategoria">
                   
-                  <option value="">Selecionar categoria</option>
+                  <option value="">Selecionar categoría</option>
 
-                  <option value="silenciadores">silenciadores</option>
+                  <option value="Taladros">Taladros</option>
 
-                  <option value="catalizadores">catalizadores</option>
+                  <option value="Andamios">Andamios</option>
 
-                  <option value="flexibles">flexibles</option>
+                  <option value="Equipos para construcción">Equipos para construcción</option>
 
                 </select>
 
               </div>
 
             </div>
-             <!-- ENTRADA PARA STOCK-->
+
+             <!-- ENTRADA PARA STOCK -->
 
              <div class="form-group">
               
@@ -231,74 +236,75 @@ MODAL AGREGAR producto
               
                 <span class="input-group-addon"><i class="fa fa-check"></i></span> 
 
-                <input type="number" class="form-control input-lg" name="nuevoStock" min="0" placeholder="piezas" required>
+                <input type="number" class="form-control input-lg" name="nuevoStock" min="0" placeholder="Stock" required>
 
               </div>
 
             </div>
-            <!-- ENTRADA PARA CODIGO PROVEEDOR-->
 
-             <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
+             <!-- ENTRADA PARA PRECIO COMPRA -->
 
-                <input type="text" class="form-control input-lg" name="nuevoCodigoPr"  placeholder="codigo proveedor" required>
+             <div class="form-group row">
 
-              </div>
-
-            </div>
-            <!-- ENTRADA PARA PRECIO COMPRA-->
-
-            <div class="form-group row">
-              <div class="col-xs-6">
-              
-                <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span> 
-
-                <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" placeholder="precio de compra">
-              </div>
-              <br>
-              
-             </div>
-            
-             <!-- ENTRADA PARA PRECIO VENTA-->
-             <div class="col-xs-6" style="padding: 0">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
-
-                <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" placeholder="precio de venta">
-              </div>
-              <br>
-              <!-- checkbox para porcentaje -->
-              <div class="col-xs-6" >
-                <div class="form-group">
-                  <label>
-                    <input type="checkbox" class="minimal flat-red porcentaje" checked>
-                    utilizar porcentaje
-                  </label>
-                </div>
-              </div>
-              <!-- entrada para porcenje -->
-
-
-              <div class="col-xs-6">
-                <div class="input-group">
+                <div class="col-xs-6">
+                
+                  <div class="input-group">
                   
-                  <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
-                  <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                </div>
-              </div>
+                    <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span> 
 
-              </div>
+                    <input type="number" class="form-control input-lg" name="nuevoPrecioCompra" min="0" placeholder="Precio de compra" required>
+
+                  </div>
+
+                </div>
+
+                <!-- ENTRADA PARA PRECIO VENTA -->
+
+                <div class="col-xs-6">
+                
+                  <div class="input-group">
+                  
+                    <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
+
+                    <input type="number" class="form-control input-lg" name="nuevoPrecioVenta" min="0" placeholder="Precio de venta" required>
+
+                  </div>
+                
+                  <br>
+
+                  <!-- CHECKBOX PARA PORCENTAJE -->
+
+                  <div class="col-xs-6">
+                    
+                    <div class="form-group">
+                      
+                      <label>
+                        
+                        <input type="checkbox" class="minimal porcentaje" checked>
+                        Utilizar procentaje
+                      </label>
+
+                    </div>
+
+                  </div>
+
+                  <!-- ENTRADA PARA PORCENTAJE -->
+
+                  <div class="col-xs-6" style="padding:0">
+                    
+                    <div class="input-group">
+                      
+                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+
+                      <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+
+                    </div>
+
+                  </div>
+
+                </div>
 
             </div>
-
-             
 
             <!-- ENTRADA PARA SUBIR FOTO -->
 
@@ -308,7 +314,7 @@ MODAL AGREGAR producto
 
               <input type="file" id="nuevaImagen" name="nuevaImagen">
 
-              <p class="help-block">Peso máximo de la foto 2 MB</p>
+              <p class="help-block">Peso máximo de la imagen 2MB</p>
 
               <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
 
@@ -326,7 +332,7 @@ MODAL AGREGAR producto
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar Producto</button>
+          <button type="submit" class="btn btn-primary">Guardar producto</button>
 
         </div>
 
