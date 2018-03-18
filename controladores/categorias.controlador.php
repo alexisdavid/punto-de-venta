@@ -152,7 +152,7 @@ class ControladorCategorias{
 		if(isset($_GET["idCategoria"])){
 
 			$tabla ="Categorias";
-			$datos = $_GET["idCategoria"];
+			$datos = $_GET["id"];
 
 			$respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos);
 
@@ -163,6 +163,23 @@ class ControladorCategorias{
 					swal({
 						  type: "success",
 						  title: "La categoría ha sido borrada correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "categorias";
+
+									}
+								})
+
+					</script>';
+			}else{
+				echo'<script>
+
+					swal({
+						  type: "error",
+						  title: "No se es posible eliminar esta categoria, tienes registros asignados",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
