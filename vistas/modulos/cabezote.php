@@ -69,7 +69,7 @@
 
 					<!-- Dropdown-toggle -->
 
-					<ul class="dropdown-menu" style="background-color: rgba(0, 0, 0, 0.9);">
+					<ul class="dropdown-menu" >
 						
 						<li class="user-body">
 							

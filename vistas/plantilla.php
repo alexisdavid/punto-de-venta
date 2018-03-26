@@ -11,12 +11,12 @@ session_start();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Inventory System</title>
+  <title>Hoenz software</title>
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="icon" href="vistas/img/plantilla/icono-negro.png">
+  <link rel="icon" href="vistas/img/plantilla/logo.jpg">
 
    <!--=====================================
   PLUGINS DE CSS
@@ -77,13 +77,19 @@ session_start();
   <!-- iCheck 1.0.1 -->
   <script src="vistas/plugins/iCheck/icheck.min.js"></script>
 
+  <!-- InputMask -->
+  <script src="vistas/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+
 </head>
 
 <!--=====================================
 CUERPO DOCUMENTO
 ======================================-->
 
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
+<body class="hold-transition skin-red sidebar-collapse sidebar-mini login-page">
  
   <?php
 

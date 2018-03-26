@@ -57,64 +57,44 @@
         </thead>
 
         <tbody>
-
-          <?php
-
-            $item = null;
-            $valor = null;
-
-            $clientes = ControladorClientes::ctrMostrarClientes($item,$valor);
-            // var_dump($Clientes);
-
-
-          foreach ($clientes as $key => $value) {
-            
-
-            echo '<tr>
-
-                    <td>'.($key+1).'</td>
-
-                    <td>'.$value["nombre"].'</td>
-
-                    <td>'.$value["rfc"].'</td>
-
-                    <td>'.$value["email"].'</td>
-
-                    <td>'.$value["telefono"].'</td>
-
-                    <td>'.$value["direccion"].'</td>
-
-                    <td>'.$value["codigopostal"].'</td>             
-
-                    <td>'.$value["compras"].'</td>
-
-                    <td>'.$value["compras"].'</td>
-
-                    <td>'.$value["fecha"].'</td>
-
-                    <td>
-
-                      <div class="btn-group">
-                          
-                        <button class="btn btn-warning btnEditarCliente" data-toggle="modal" data-target="#modalEditarCliente" idCliente="'.$value["id"].'"><i class="fa fa-pencil"></i></button>';
-
-                      if($_SESSION["perfil"] == "Administrador"){
-
-                          echo '<button class="btn btn-danger btnEliminarCliente" idCliente="'.$value["id"].'"><i class="fa fa-times"></i></button>';
-
-                      }
-
-                      echo '</div>  
-
-                    </td>
-
-                  </tr>';
           
-            }
+          <tr>
 
-        ?>
-        
+            <td>1</td>
 
+            <td>Juan Villegas</td>
+
+            <td>8161123</td>
+
+            <td>juan@hotmail.com</td>
+
+            <td>555 57 67</td>
+
+            <td>calle 27 # 40 - 36</td>
+
+            <td>77-560</td>
+
+            <td>35</td>
+
+            <td>2017-12-11 12:05:32</td>
+
+            <td>2017-12-11 12:05:32</td>
+
+            <td>
+
+              <div class="btn-group">
+                  
+                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+
+                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+
+              </div>  
+
+            </td>
+
+          </tr>
+
+          
         </tbody>
 
        </table>
@@ -237,7 +217,7 @@ MODAL AGREGAR Cliente
               
                 <span class="input-group-addon"><i class="fa fa-code"></i></span> 
                 
-                <input type="number" class="form-control input-lg" name="nuevoCodigoPostal" placeholder="Ingresar codigo postal">
+                <input type="text" class="form-control input-lg" name="nuevoCodigoPostal" placeholder="Ingresar codigo postal">
                 <!-- <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required> -->
 
               </div>
@@ -261,14 +241,6 @@ MODAL AGREGAR Cliente
         </div>
 
       </form>
-
-      <?php
-
-        $crearCliente = new ControladorClientes();
-        $crearCliente -> ctrCrearCliente();
-
-      ?>
-
 
     </div>
 
