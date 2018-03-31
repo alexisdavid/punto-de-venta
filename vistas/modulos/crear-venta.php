@@ -194,8 +194,10 @@
                           <td style="width: 30%">
                             
                             <div class="input-group">
-                           
+
                               <input type="number" class="form-control" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" placeholder="0" required>
+                              <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
+                               <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
                               <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                         
                             </div>
@@ -208,7 +210,7 @@
                            
                               <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                              <input type="number" min="1" class="form-control" id="nuevoTotalVenta" name="nuevoTotalVenta" placeholder="00000" readonly required>
+                              <input type="text"  class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" placeholder="0.00" readonly required>
                               
                         
                             </div>
@@ -239,28 +241,18 @@
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                         <option value="">Seleccione método de pago</option>
-                        <option value="efectivo">Efectivo</option>
-                        <option value="cheque">cheque</option>  
-                        <option value="transferencia">transferencia</option>  
-                        <option value="tarjetaCredito">Tarjeta Crédito</option>
-                        <option value="tarjetaDebito">Tarjeta Débito</option>                  
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="CH">cheque</option>  
+                        <option value="TR">transferencia</option>  
+                        <option value="TC">Tarjeta Crédito</option>
+                        <option value="TD">Tarjeta Débito</option>                  
                       </select>    
 
                     </div>
 
                   </div>
 
-                  <div class="col-xs-6" style="padding-left:0px">
-                        
-                    <div class="input-group">
-                         
-                      <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" placeholder="Código transacción"  required>
-                           
-                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                      
-                    </div>
-
-                  </div>
+                  <div class="cajasMetodoPago"></div>
 
                 </div>
 

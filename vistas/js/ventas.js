@@ -163,9 +163,15 @@ AGREGANDO PRODUCTOS A LA VENTA DESDE LA TABLA
 
 $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
+
 	var idProducto = $(this).attr("idProducto");
 
 	$(this).removeClass("btn-primary agregarProducto");
+
+	// if(data[4] <= 0){
+	// 	$(this).addClass("btn-default");
+
+	// }
 
 	$(this).addClass("btn-default");
 
@@ -449,7 +455,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 
 	if(Number($(this).val()) > Number($(this).attr("stock"))){
 
-		$(this).val(1);
+		$(this).val(0);
 
 		swal({
 	      title: "La cantidad supera el Stock",
@@ -471,5 +477,172 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
     listarProductos()
+
+})
+/*=============================================
+SUMAR TODOS LOS PRECIOS
+=============================================*/
+
+function sumarTotalPrecios(){
+
+	var precioItem = $(".nuevoPrecioProducto");
+	var arraySumaPrecio = [];  
+
+	for(var i = 0; i < precioItem.length; i++){
+
+		 arraySumaPrecio.push(Number($(precioItem[i]).val()));
+		 
+	}
+
+	function sumaArrayPrecios(total, numero){
+
+		return total + numero;
+
+	}
+
+	var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
+	
+	$("#nuevoTotalVenta").val(sumaTotalPrecio);
+	$("#totalVenta").val(sumaTotalPrecio);
+	$("#nuevoTotalVenta").attr("total",sumaTotalPrecio);
+
+
+}
+/*=============================================
+FUNCIÓN AGREGAR IMPUESTO
+=============================================*/
+
+function agregarImpuesto(){
+
+	var descuento = $("#descuento").val();
+
+	var impuesto = $("#nuevoImpuestoVenta").val();
+
+	var precioTotal = $("#nuevoTotalVenta").attr("total");
+
+	var precioDescuento= Number(precioTotal- descuento);
+
+	var precioImpuesto = Number(precioDescuento * impuesto/100);
+
+	var totalConImpuesto = Number(precioImpuesto) + Number(precioDescuento);
+	
+	$("#nuevoTotalVenta").val(totalConImpuesto);
+
+	$("#totalVenta").val(totalConImpuesto);
+
+	$("#nuevoPrecioImpuesto").val(precioImpuesto);
+
+	// $("#descuento").val(precioDescuento);
+
+	$("#nuevoPrecioNeto").val(precioDescuento);
+
+}
+/*=============================================
+CUANDO CAMBIA EL IMPUESTO Y DESCUENTO
+=============================================*/
+
+$("#nuevoImpuestoVenta").change(function(){
+
+	agregarImpuesto();
+
+});
+$("#descuento").change(function(){
+	agregarImpuesto();
+})
+/*=============================================
+FORMATO AL PRECIO FINAL
+=============================================*/
+
+$("#nuevoTotalVenta").number(true, 2);
+
+/*=============================================
+SELECCIONAR MÉTODO DE PAGO
+=============================================*/
+
+$("#nuevoMetodoPago").change(function(){
+
+	var metodo = $(this).val();
+
+	if(metodo == "Efectivo"){
+
+		$(this).parent().parent().removeClass("col-xs-6");
+
+		$(this).parent().parent().addClass("col-xs-4");
+
+		$(this).parent().parent().parent().children(".cajasMetodoPago").html(
+
+			 '<div class="col-xs-4">'+ 
+				
+
+			 	'<div class="input-group">'+ 
+
+
+			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+ 
+
+			 		'<input type="text" class="form-control" id="nuevoValorEfectivo" placeholder="su pago" required>'+
+
+			 	'</div>'+
+
+			 '</div>'+
+
+			 '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">'+
+
+			 	'<div class="input-group">'+
+
+			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+
+			 		'<input type="text" class="form-control" id="nuevoCambioEfectivo" placeholder="cambio" readonly required>'+
+
+			 	'</div>'+
+
+			 '</div>'
+
+		 )
+
+		// Agregar formato al precio
+
+		$('#nuevoValorEfectivo').number( true, 2);
+      	$('#nuevoCambioEfectivo').number( true, 2);
+
+
+      	// Listar método en la entrada
+      	listarMetodos()
+
+	}else{
+
+		$(this).parent().parent().removeClass('col-xs-4');
+
+		$(this).parent().parent().addClass('col-xs-6');
+
+		 $(this).parent().parent().parent().children('.cajasMetodoPago').html(
+
+		 	'<div class="col-xs-6" style="padding-left:0px">'+
+                        
+                '<div class="input-group">'+
+                     
+                  '<input type="number" min="0" class="form-control" id="nuevoCodigoTransaccion" placeholder="Código transacción"  required>'+
+                       
+                  '<span class="input-group-addon"><i class="fa fa-lock"></i></span>'+
+                  
+                '</div>'+
+
+              '</div>')
+
+	}
+
+
+})
+/*=============================================
+CAMBIO EN EFECTIVO
+=============================================*/
+$(".formularioVenta").on("change", "input#nuevoValorEfectivo", function(){
+
+	var efectivo = $(this).val();
+
+	var cambio =  Number(efectivo) - Number($('#nuevoTotalVenta').val());
+
+	var nuevoCambioEfectivo = $(this).parent().parent().parent().children('#capturarCambioEfectivo').children().children('#nuevoCambioEfectivo');
+
+	nuevoCambioEfectivo.val(cambio);
 
 })

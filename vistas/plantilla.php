@@ -81,7 +81,8 @@ session_start();
   <script src="vistas/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="vistas/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
+ <!-- jqueryNumber -->
+  <script src="vistas/plugins/jqueryNumber/jquerynumber.min.js"></script>
 
 </head>
 
@@ -162,6 +163,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/ventas.js"></script>
+
 
 </body>
 </html>
