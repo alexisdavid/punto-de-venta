@@ -32,7 +32,7 @@
           
           <div class="box-header with-border"></div>
 
-          <form role="form" method="post" class="formularioVenta">
+          <form role="form" metohd="post">
 
             <div class="box-body">
   
@@ -48,15 +48,14 @@
                     
                     <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                     <input type="text" class="form-control" id="nuevoVendedor" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                      <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
+                    <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
 
                   </div>
 
                 </div> 
 
                 <!--=====================================
-                ENTRADA DE VENTA
+                ENTRADA DEL VENDEDOR
                 ======================================--> 
 
                 <div class="form-group">
@@ -65,38 +64,7 @@
                     
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
                     
-                    
-                    <?php
-
-                    $item = null;
-                    $valor = null;
-
-                    $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-
-                    if(!$ventas){
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
-                  
-
-                    }else{
-
-                      foreach ($ventas as $key => $value) {
-                        
-                        
-                      
-                      }
-
-                      $codigo = $value["codigo"] + 1;
-
-
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                  
-
-                    }
-
-                    ?>
-                    
+                    <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10002343" readonly>
                   
                   </div>
                 
@@ -115,20 +83,6 @@
                     <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
 
                     <option value="">Seleccionar cliente</option>
-                     <?php
-
-                      $item = null;
-                      $valor = null;
-
-                      $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
-
-                       foreach ($categorias as $key => $value) {
-
-                         echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
-
-                       }
-
-                    ?>
 
                     </select>
                     
@@ -144,6 +98,41 @@
 
                 <div class="form-group row nuevoProducto">
 
+                  <!-- Descripción del producto -->
+                  
+                  <div class="col-xs-6" style="padding-right:0px">
+                  
+                    <div class="input-group">
+                      
+                      <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></span>
+
+                      <input type="text" class="form-control" id="agregarProducto" name="agregarProducto" placeholder="Descripción del producto" required>
+
+                    </div>
+
+                  </div>
+
+                  <!-- Cantidad del producto -->
+
+                  <div class="col-xs-3">
+                    
+                     <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" placeholder="0" required>
+
+                  </div> 
+
+                  <!-- Precio del producto -->
+
+                  <div class="col-xs-3" style="padding-left:0px">
+
+                    <div class="input-group">
+
+                      <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                         
+                      <input type="number" min="1" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" placeholder="000000" readonly required>
+         
+                    </div>
+                     
+                  </div> 
 
                 </div>
 
@@ -151,7 +140,7 @@
                 BOTÓN PARA AGREGAR PRODUCTO
                 ======================================-->
 
-                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agregar producto</button>
+                <button type="button" class="btn btn-default hidden-lg">Agregar producto</button>
 
                 <hr>
 
@@ -294,7 +283,7 @@
 
           <div class="box-body">
             
-            <table class="table table-bordered table-striped dt-responsive tablaVentas">
+            <table class="table table-bordered table-striped dt-responsive tablas">
               
                <thead>
 
@@ -309,6 +298,22 @@
 
               </thead>
 
+              <tbody>
+
+                <tr>
+                  <td>1.</td>                 
+                  <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+                  <td>00123</td>
+                  <td>Lorem ipsum dolor sit amet</td>       
+                  <td>20</td>                 
+                  <td>                 
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary">Agregar</button> 
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
 
             </table>
 
@@ -379,7 +384,7 @@ MODAL AGREGAR CLIENTE
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text"  class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
 
               </div>
 
@@ -427,21 +432,19 @@ MODAL AGREGAR CLIENTE
 
             </div>
 
-              <!-- ENTRADA PARA LA CODIGO POSTAL -->
+             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
             
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-code"></i></span> 
-                
-                <input type="number" class="form-control input-lg" name="nuevoCodigoPostal" placeholder="Ingresar codigo postal">
-                <!-- <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required> -->
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
             </div>
-            
   
           </div>
 

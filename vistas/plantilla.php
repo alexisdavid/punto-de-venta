@@ -89,7 +89,7 @@ session_start();
 CUERPO DOCUMENTO
 ======================================-->
 
-<body class="hold-transition skin-red sidebar-collapse sidebar-mini login-page">
+<body class="hold-transition skin-green sidebar-collapse sidebar-mini login-page">
  
   <?php
 
@@ -161,6 +161,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/categorias.js"></script>
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/clientes.js"></script>
+<script src="vistas/js/ventas.js"></script>
 
 </body>
 </html>
