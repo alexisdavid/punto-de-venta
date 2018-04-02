@@ -81,19 +81,18 @@
                     }else{
 
                       foreach ($ventas as $key => $value) {
-                        
-                        
-                      
-                      }
-
-                      $codigo = $value["codigo"] + 1;
-
-
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
+                          
+                         
                   
 
+                      
+                      }
+                      $codigo = $value["codigo"] + 1;
+
+                      echo '<input type="number" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
+
                     }
+                    
 
                     ?>
                     
@@ -146,6 +145,7 @@
 
 
                 </div>
+                <input type="hidden" id="listaProductos" name="listaProductos">
 
                 <!--=====================================
                 BOTÓN PARA AGREGAR PRODUCTO
@@ -211,6 +211,7 @@
                               <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
                               <input type="text"  class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" placeholder="0.00" readonly required>
+                              <input type="hidden" name="totalVenta"  id="totalVenta">
                               
                         
                             </div>
@@ -254,6 +255,8 @@
 
                   <div class="cajasMetodoPago"></div>
 
+                  <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+
                 </div>
 
                 <br>
@@ -269,6 +272,12 @@
           </div>
 
         </form>
+        <?
+
+        $guardarVenta = new ControladorVentas();
+        $guardarVenta -> ctrCrearVenta();
+
+        ?>
 
         </div>
             
