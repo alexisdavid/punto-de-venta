@@ -37,6 +37,7 @@ $itemCliente = "id";
 $valorCliente = $respuestaVenta["id_cliente"];
 
 $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+// var_dump($respuestaCliente);
 
 //TRAEMOS LA INFORMACIÓN DEL VENDEDOR
 
@@ -44,6 +45,7 @@ $itemVendedor = "id";
 $valorVendedor = $respuestaVenta["id_vendedor"];
 
 $respuestaVendedor = ControladorUsuarios::ctrMostrarUsuarios($itemVendedor, $valorVendedor);
+
 
 //REQUERIMOS LA CLASE TCPDF
 
@@ -63,17 +65,18 @@ $bloque1 = <<<EOF
 		
 		<tr>
 			
-			<td style="width:150px"><img src="images/logo-negro-bloque.png"></td>
+			<td style="width:150px"><img src="images/logo.jpg"></td>
 
 			<td style="background-color:white; width:140px">
 				
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
 					<br>
-					NIT: 71.759.963-9
+					RFC: DUCJ721121MMA
 
 					<br>
-					Dirección: Calle 44B 92-11
+					Dirección: C.BLVD. ALFREDO V. BONFIL MANZANA 35 LOTE 10 SMZ 38. ENTRE LEONA VICARIO Y LAZARO
+								CARDENAS CP.77560,BENITO JUAREZ,QUINTANA ROO,MEXICO.
 
 				</div>
 
@@ -84,16 +87,22 @@ $bloque1 = <<<EOF
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 					
 					<br>
-					Teléfono: 300 786 52 49
+					Teléfono: 8820925
+
+					<br>
+					celular: 9982432827
 					
 					<br>
-					ventas@inventorysystem.com
+					EMAIL:
+					duartebonfil@gmail.com
+					<br>
+					NOTA SIN VALOR FISCAL
 
 				</div>
 				
 			</td>
 
-			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>FACTURA N.<br>$valorVenta</td>
+			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>No.VENTA #.<br>$valorVenta<br></td>
 
 		</tr>
 
@@ -121,13 +130,15 @@ $bloque2 = <<<EOF
 	
 		<tr>
 		
-			<td style="border: 1px solid #666; background-color:white; width:390px">
+			<td style=" background-color:white; width:390px">
 
-				Cliente: $respuestaCliente[nombre]
+				Cliente: $respuestaCliente[nombre], RFC: $respuestaCliente[rfc] <br>Direccion: $respuestaCliente[direccion]<br>CP: $respuestaCliente[codigopostal] 
+			
 
 			</td>
 
-			<td style="border: 1px solid #666; background-color:white; width:150px; text-align:right">
+
+			<td style=" background-color:white; width:110px; text-align:right">
 			
 				Fecha: $fecha
 
@@ -136,8 +147,11 @@ $bloque2 = <<<EOF
 		</tr>
 
 		<tr>
-		
-			<td style="border: 1px solid #666; background-color:white; width:540px">Vendedor: $respuestaVendedor[nombre]</td>
+			
+			
+
+			<td style=" background-color:white; width:540x">Vendedor: $respuestaVendedor[nombre] </td>
+
 
 		</tr>
 
@@ -243,7 +257,8 @@ $bloque5 = <<<EOF
 			<td style="border-right: 1px solid #666; color:#333; background-color:white; width:340px; text-align:center"></td>
 
 			<td style="border: 1px solid #666;  background-color:white; width:100px; text-align:center">
-				Neto:
+				Subtotal
+				(descuento inc):
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
@@ -257,7 +272,7 @@ $bloque5 = <<<EOF
 			<td style="border-right: 1px solid #666; color:#333; background-color:white; width:340px; text-align:center"></td>
 
 			<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">
-				Impuesto:
+				IVA:
 			</td>
 		
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
@@ -281,15 +296,15 @@ $bloque5 = <<<EOF
 		</tr>
 
 
+
 	</table>
+
 
 EOF;
 
 $pdf->writeHTML($bloque5, false, false, false, false, '');
 
 
-
-// ---------------------------------------------------------
 //SALIDA DEL ARCHIVO 
 
 $pdf->Output('factura.pdf');
