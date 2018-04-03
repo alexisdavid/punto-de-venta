@@ -126,4 +126,46 @@ class ModeloVentas{
 		$stmt = null;
 
 	}
+
+		/*=============================================
+	RANGO FECHAS
+	=============================================*/	
+
+	static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
+
+		if($fechaInicial == null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();	
+
+
+		}else if($fechaInicial == $fechaFinal){
+
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha like '%$fechaFinal%'");
+
+			$stmt -> bindParam(":fecha", $fechaFinal, PDO::PARAM_STR);
+
+			$stmt -> execute();
+			
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$fechaFinal = new DateTime();
+			$fechaFinal->add(new DateInterval('P1D'));
+			$fechaFinal2 = $fechaFinal->format('Y-m-d');
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fecha BETWEEN '$fechaInicial' AND '$fechaFinal2'");
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+	}
 }

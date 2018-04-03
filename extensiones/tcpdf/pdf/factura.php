@@ -303,6 +303,34 @@ $bloque5 = <<<EOF
 EOF;
 
 $pdf->writeHTML($bloque5, false, false, false, false, '');
+// ---------------------------------------------------------
+
+$bloque6 = <<<EOF
+
+	<table>
+		
+		<tr>
+			
+			
+
+			<td style="background-color:white; width:260px">
+				
+				<div style="font-size:8.5px; text-align:right; line-height:15px;">
+					
+					<br>
+					Este comprobante NO es una representacion impresa de un CFDi
+				</div>
+
+			</td>
+
+			
+		</tr>
+
+	</table>
+
+EOF;
+
+$pdf->writeHTML($bloque6, false, false, false, false, '');
 
 
 //SALIDA DEL ARCHIVO 
