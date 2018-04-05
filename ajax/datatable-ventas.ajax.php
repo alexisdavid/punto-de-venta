@@ -13,9 +13,8 @@ class TablaProductos{
 
   	$item = null;
     $valor = null;
-    $orden = "id";
-
-    $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
+   
+    $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
 
     echo '{
 			"data": [';

@@ -76,7 +76,7 @@
             $fechaInicial = $_GET["fechaInicial"];
             // var_dump($fechaInicial);
             $fechaFinal = $_GET["fechaFinal"];
-            $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
+            // $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
             // var_dump($fechaFinal);
 
           }else{

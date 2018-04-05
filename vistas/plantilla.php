@@ -51,7 +51,7 @@ session_start();
   <link rel="stylesheet" href="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
   <!-- Morris chart -->
-  <!-- <link rel="stylesheet" href="vistas/bower_components/morris.js/morris.css"> -->
+  <link rel="stylesheet" href="vistas/bower_components/morris.js/morris.css">
 
   <!--=====================================
   PLUGINS DE JAVASCRIPT
@@ -94,12 +94,12 @@ session_start();
   <script src="vistas/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 
   <!-- Morris.js charts http://morrisjs.github.io/morris.js/-->
-  <!-- <script src="vistas/bower_components/raphael/raphael.min.js"></script>
+  <script src="vistas/bower_components/raphael/raphael.min.js"></script>
   <script src="vistas/bower_components/morris.js/morris.min.js"></script>
- -->
+
   <!-- ChartJS http://www.chartjs.org/-->
- <!--  <script src="vistas/bower_components/Chart.js/Chart.js"></script>
- -->
+  <script src="vistas/bower_components/chart.js/Chart.js"></script>
+
 </head>
 
 <!--=====================================
@@ -180,7 +180,7 @@ CUERPO DOCUMENTO
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/clientes.js"></script>
 <script src="vistas/js/ventas.js"></script>
-
+<script src="vistas/js/reportes.js"></script>
 
 
 </body>

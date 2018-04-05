@@ -307,6 +307,7 @@ EDITAR PRODUCTO
 $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 
 	var idProducto = $(this).attr("idProducto");
+	// console.log("idProducto", idProducto);
 	
 	var datos = new FormData();
     datos.append("idProducto", idProducto);
@@ -321,7 +322,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
       processData: false,
       dataType:"json",
       success:function(respuesta){
-      
+      	// console.log(respuesta);
           
           var datosCategoria = new FormData();
           datosCategoria.append("idCategoria",respuesta["id_categoria"]);
@@ -346,7 +347,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 
           })
 
-
+           console.log(respuesta["codigo_proveedor"]);
            $("#editarCodigo").val(respuesta["codigo"]);
 
            $("#editarDescripcion").val(respuesta["descripcion"]);
@@ -362,7 +363,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 
            	$("#imagenActual").val(respuesta["imagen"]);
 
-           	$(".previsualizar").attr("src",  respuesta["imagen"]);
+           	$(".previsualizar").attr("src", respuesta["imagen"]);
 
            }
 

@@ -339,7 +339,7 @@ MODAL EDITAR PRODUCTO
               
                 <span class="input-group-addon"><i class="fa fa-th"></i></span> 
 
-                <select class="form-control input-lg"  name="editarCategoria" readonly required>
+                <select class="form-control input-lg" name="editarCategoria" readonly required>
                   
                   <option id="editarCategoria"></option>
 
