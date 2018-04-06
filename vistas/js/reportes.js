@@ -37,6 +37,8 @@ $('#daterange-btn2').daterangepicker(
     var fechaFinal = end.format('YYYY-M-D');
 
     var capturarRango = $("#daterange-btn2 span").html();
+
+    
    
     localStorage.setItem("capturarRango2", capturarRango);
 
@@ -76,21 +78,21 @@ $(".daterangepicker.opensright .ranges li").on("click", function(){
 
     var fechaInicial = año+"-"+mes+"-"+dia;
 
-      var fechaFinal = año+"-"+mes+"-"+dia;
+    var fechaFinal = año+"-"+mes+"-"+dia;
       
-      if(dia < 10){
+    if(mes < 10 && dia < 10){
       var fechaInicial = año+"-0"+mes+"-0"+dia;
 
-        var fechaFinal = año+"-0"+mes+"-0"+dia;
+      var fechaFinal = año+"-0"+mes+"-0"+dia;
 
   // para cambiar la configuracion de la hora   
 
-    }else if(mes < 10){
+    }else if(mes < 10 && dia > 10){
 
       
-      var fechaInicial = año+"-0"+mes+"-"+dia;
+      var fechaInicial = año+"-0"+mes+dia;
 
-        var fechaFinal = año+"-0"+mes+"-"+dia;
+        var fechaFinal = año+"-0"+mes+dia;
 
     }else if(mes < 10 && dia < 10){
 

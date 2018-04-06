@@ -4,6 +4,7 @@ error_reporting(0);
 
 if(isset($_GET["fechaInicial"])){
 
+
     $fechaInicial = $_GET["fechaInicial"];
    
     $fechaFinal = $_GET["fechaFinal"];
@@ -15,6 +16,7 @@ $fechaFinal = null;
 
 }
 
+
 $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
 // var_dump($respuesta);
 $arrayFechas = array();
@@ -22,7 +24,7 @@ $arrayVentas = array();
 $sumaPagosMes = array();
 
 foreach ($respuesta as $key => $value) {
-// var_dump($value);
+
 	#Capturamos sólo el año y el mes
 	$fecha = substr($value["fecha"],0,7);
 
@@ -31,7 +33,7 @@ foreach ($respuesta as $key => $value) {
 
 	#Capturamos las ventas
 	$arrayVentas = array($fecha => $value["total"]);
-
+    // var_dump($arrayVentas);
 	#Sumamos los pagos que ocurrieron el mismo mes
 	foreach ($arrayVentas as $key => $value) {
 		
@@ -89,7 +91,7 @@ GRÁFICO DE VENTAS
 
 	    echo "{y: '".$key."', ventas: ".$sumaPagosMes[$key]." }";
 
-    }else{
+        }else{
 
        echo "{ y: '0', ventas: '0' }";
 

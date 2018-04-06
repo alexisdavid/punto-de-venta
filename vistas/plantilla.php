@@ -98,7 +98,7 @@ session_start();
   <script src="vistas/bower_components/morris.js/morris.min.js"></script>
 
   <!-- ChartJS http://www.chartjs.org/-->
-  <script src="vistas/bower_components/chart.js/Chart.js"></script>
+  <script src="vistas/bower_components/chart.js/chart.js"></script>
 
 </head>
 
@@ -106,7 +106,7 @@ session_start();
 CUERPO DOCUMENTO
 ======================================-->
 
-<body class="hold-transition skin-green sidebar-collapse sidebar-mini login-page">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
  
   <?php
 

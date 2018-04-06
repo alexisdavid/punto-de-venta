@@ -1,105 +1,106 @@
- <?php
+<?php
 
 $item = null;
 $valor = null;
-$orden = "ventas"
-$productos = ControladorReportes::ctrMostrarReportes($item, $valor,$orden);
-var_dump($productos);
+$orden = "ventas";
+
+$productos = ControladorReportes::ctrMostrarReportes($item, $valor, $orden);
+// var_dump($productos);
 
 
-$colores = array("red","green","yellow","aqua","purple","blue","cyan","magenta","orange","gold");
+$colores = array("red","green","yellow","aqua","purple","blue","black","gray","orange","gold");
 
-$totalVentas = ControladorProductos::ctrMostrarSumaVentas();
+$totalVentas = ControladorReportes::ctrMostrarSumaVentas();
 
 
-?>
-
-<!--=====================================
-PRODUCTOS MÁS VENDIDOS
-======================================-->
+?> 
 
 <div class="box box-default">
-	
-	<div class="box-header with-border">
-  
-      <h3 class="box-title">Productos más vendidos</h3>
 
-    </div>
+  <div class="box-header with-border">
 
-	<div class="box-body">
+    <h3 class="box-title">Productos mas vendidos</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+
+    <div class="row">
+
+
+      <div class="col-md-7">
+
+        <div class="chart-responsive">
+
+          <canvas id="pieChart" height="150"></canvas>
+
+        </div>
+        
+      </div>
+      
+      <div class="col-md-5">
+
+        <ul class="chart-legend clearfix">
+          <?php
+
+          for ($i=0; $i < 10; $i++) { 
+           echo ' <li><i class="fa fa-circle-o text-'.$colores[$i].'"></i>  '.$productos[$i]["descripcion"].' </li>';
+          }
+
+          ?>
+         
+          
+        </ul>
+      </div>
     
-      	<div class="row">
-
-	        <div class="col-md-7">
-
-	 			<div class="chart-responsive">
-	            
-	            	<canvas id="pieChart" height="150"></canvas>
-	          
-	          	</div>
-
-	        </div>
-
-		    <div class="col-md-5">
-		      	
-		  	 	<ul class="chart-legend clearfix">
-
-		  	 	<?php
-
-					for($i = 0; $i < 10; $i++){
-
-					echo ' <li><i class="fa fa-circle-o text-'.$colores[$i].'"></i> '.$productos[$i]["descripcion"].'</li>';
-
-					}
-
-
-		  	 	?>
-
-
-		  	 	</ul>
-
-		    </div>
-
-		</div>
-
     </div>
+   
+  </div>
+ 
+  <div class="box-footer no-padding">
 
-    <div class="box-footer no-padding">
-    	
-		<ul class="nav nav-pills nav-stacked">
-			
-			 <?php
+    <ul class="nav nav-pills nav-stacked">
 
-          	for($i = 0; $i <5; $i++){
-			
-          		echo '<li>
-						 
-						 <a>
+      <?php 
 
-						 <img src="'.$productos[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> 
-						 '.$productos[$i]["descripcion"].'
+        for ($i=0; $i < 5; $i++) { 
 
-						 <span class="pull-right text-'.$colores[$i].'">   
-						 '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%
-						 </span>
-							
-						 </a>
+          echo '
+                <li>
+                 
+                   <a>
 
-      				</li>';
+                    <img src="'.$productos[$i]["imagen"].'" class="img-thumbnail" width="60px" style="margin-right:10px"> 
 
-			}
-
-			?>
+                     '.$productos[$i]["descripcion"].'
 
 
-		</ul>
+                  <span class="pull-right text-'.$colores[$i].'">
 
-    </div>
+                    <i class="fa fa-angle-down"></i>
 
-</div>
+                     '.ceil($productos[$i]["ventas"]*100/$totalVentas["total"]).'%
+
+                     </span>
+
+                  </a>
+
+                </li>';
+
+        }
+
+      ?>
+
+
+    </ul>
+
+  </div>
+ 
+  </div>
+
+
 
 <script>
-	
+  
 
   // -------------
   // - PIE CHART -
@@ -113,7 +114,7 @@ PRODUCTOS MÁS VENDIDOS
 
   for($i = 0; $i < 10; $i++){
 
-  	echo "{
+    echo "{
       value    : ".$productos[$i]["ventas"].",
       color    : '".$colores[$i]."',
       highlight: '".$colores[$i]."',
@@ -159,3 +160,4 @@ PRODUCTOS MÁS VENDIDOS
 
 
 </script>
+
