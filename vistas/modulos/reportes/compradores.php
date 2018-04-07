@@ -6,7 +6,7 @@ $valor = null;
 $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 // var_dump($ventas);
 $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
-
+// var_dump($clientes);
 $arrayClientes = array();
 $arraylistaClientes = array();
 

@@ -54,11 +54,11 @@
            
          </tr> 
 
-        </thead>
-
-       
+        </thead>       
 
        </table>
+
+       <input type="hidden" value="<?php echo $_SESSION['perfil']; ?>" class="perfilUsuario">
 
       </div>
 

@@ -20,34 +20,90 @@
 
   </section>
 
-  <!-- Main content -->
   <section class="content">
 
-    <!-- Default box -->
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Title</h3>
+    <div class="row">
+      
+    <?php
 
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                  title="Collapse">
-            <i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fa fa-times"></i></button>
+    if($_SESSION["perfil"] =="Administrador"){
+
+      include "inicio/cajas-superiores.php";
+
+    }
+
+    ?>
+
+    </div> 
+
+     <div class="row">
+       
+        <div class="col-lg-12">
+
+          <?php
+
+          if($_SESSION["perfil"] =="Administrador"){
+          
+           include "reportes/grafico-ventas.php";
+
+          }
+
+          ?>
+
         </div>
-      </div>
-      <div class="box-body">
-        Start creating your amazing application!
-      </div>
-      <!-- /.box-body -->
-      <div class="box-footer">
-        Footer
-      </div>
-      <!-- /.box-footer-->
-    </div>
-    <!-- /.box -->
+
+        <div class="col-lg-6">
+
+          <?php
+
+          if($_SESSION["perfil"] =="Administrador"){
+          
+           include "reportes/productos-mas-vendidos.php";
+
+         }
+
+          ?>
+
+        </div>
+
+         <div class="col-lg-6">
+
+          <?php
+
+          if($_SESSION["perfil"] =="Administrador"){
+          
+           include "inicio/productos-recientes.php";
+
+         }
+
+          ?>
+
+        </div> 
+
+         <div class="col-lg-12">
+           
+          <?php
+
+          if($_SESSION["perfil"] =="Especial" || $_SESSION["perfil"] =="Vendedor"){
+
+             echo '<div class="box box-success">
+
+             <div class="box-header">
+
+             <h1>Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+
+             </div>
+
+             </div>';
+
+          }
+
+          ?>
+
+         </div>
+
+     </div>
 
   </section>
-  <!-- /.content -->
+ 
 </div>
-<!-- /.content-wrapper -->

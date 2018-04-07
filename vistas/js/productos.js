@@ -2,56 +2,133 @@
 CARGAR LA TABLA DINÁMICA
 =============================================*/
 
-var table = $('.tablaProductos').DataTable({
+if($(".perfilUsuario").val() != "Administrador"){
 
-	"ajax":"ajax/datatable-productos.ajax.php",
-	"columnDefs": [
+	var botonesTabla = '<div class="btn-group"><button class="btn btn-warning btnEditarProducto" idProducto data-toggle="modal" data-target="#modalEditarProducto"><i class="fa fa-pencil"></i></button>';
 
-		{
-			"targets": -10,
-			 "data": null,
-			 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
 
-		},
+}else{
 
-		{
-			"targets": -1,
-			 "data": null,
-			 "defaultContent": '<div class="btn-group"><button class="btn btn-warning btnEditarProducto" idProducto data-toggle="modal" data-target="#modalEditarProducto"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btnEliminarProducto" idProducto codigo imagen><i class="fa fa-times"></i></button></div>'
+	var botonesTabla = '<div class="btn-group"><button class="btn btn-warning btnEditarProducto" idProducto data-toggle="modal" data-target="#modalEditarProducto"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btnEliminarProducto" idProducto codigo imagen><i class="fa fa-times"></i></button></div>';
+
+}
+
+if(window.matchMedia("(max-width:767px)").matches){
+
+	var table = $('.tablaProductos').DataTable({
+
+		"ajax":"ajax/datatable-productos.ajax.php",
+		"columnDefs": [
+
+			{
+				"targets": -10,
+				 "data": null,
+				 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
+
+			},
+
+			{
+				"targets": -1,
+				 "data": null,
+				 "defaultContent": botonesTabla
+
+			}
+
+		],
+
+		"language": {
+
+			"sProcessing":     "Procesando...",
+			"sLengthMenu":     "Mostrar _MENU_ registros",
+			"sZeroRecords":    "No se encontraron resultados",
+			"sEmptyTable":     "Ningún dato disponible en esta tabla",
+			"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+			"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+			"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+			"sInfoPostFix":    "",
+			"sSearch":         "Buscar:",
+			"sUrl":            "",
+			"sInfoThousands":  ",",
+			"sLoadingRecords": "Cargando...",
+			"oPaginate": {
+			"sFirst":    "Primero",
+			"sLast":     "Último",
+			"sNext":     "Siguiente",
+			"sPrevious": "Anterior"
+			},
+			"oAria": {
+				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			}
 
 		}
 
-	],
 
-	"language": {
+	})
 
-		"sProcessing":     "Procesando...",
-		"sLengthMenu":     "Mostrar _MENU_ registros",
-		"sZeroRecords":    "No se encontraron resultados",
-		"sEmptyTable":     "Ningún dato disponible en esta tabla",
-		"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
-		"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
-		"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-		"sInfoPostFix":    "",
-		"sSearch":         "Buscar:",
-		"sUrl":            "",
-		"sInfoThousands":  ",",
-		"sLoadingRecords": "Cargando...",
-		"oPaginate": {
-		"sFirst":    "Primero",
-		"sLast":     "Último",
-		"sNext":     "Siguiente",
-		"sPrevious": "Anterior"
-		},
-		"oAria": {
-			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+}else{
+
+	var table = $('.tablaProductos').DataTable({
+
+		"ajax":"ajax/datatable-productos.ajax.php",
+		"columnDefs": [
+
+			{
+				"targets": -10,
+				 "data": null,
+				 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
+
+			},
+
+			// {
+			// 	"targets": -6,
+			// 	 "data": null,
+			// 	 "defaultContent": '<div class="btn-group"><button class="btn btn-success Stock"></button></div>'
+
+			// },
+
+			{
+				"targets": -1,
+				 "data": null,
+				 "defaultContent": botonesTabla
+
+			}
+
+		],
+
+		"language": {
+
+			"sProcessing":     "Procesando...",
+			"sLengthMenu":     "Mostrar _MENU_ registros",
+			"sZeroRecords":    "No se encontraron resultados",
+			"sEmptyTable":     "Ningún dato disponible en esta tabla",
+			"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+			"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+			"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+			"sInfoPostFix":    "",
+			"sSearch":         "Buscar:",
+			"sUrl":            "",
+			"sInfoThousands":  ",",
+			"sLoadingRecords": "Cargando...",
+			"oPaginate": {
+			"sFirst":    "Primero",
+			"sLast":     "Último",
+			"sNext":     "Siguiente",
+			"sPrevious": "Anterior"
+			},
+			"oAria": {
+				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			}
+
 		}
 
-	}
+
+	})
 
 
-})
+
+}
 
 /*=============================================
 ACTIVAR LOS BOTONES CON LOS ID CORRESPONDIENTES
@@ -103,6 +180,12 @@ setTimeout(function(){
 
 	cargarImagenes();
 
+	if($(".perfilUsuario").val() != "Administrador"){
+
+		$('.btnEliminarProducto').remove();
+
+	}
+
 },300)
 
 /*=============================================
@@ -112,6 +195,11 @@ CARGAMOS LAS IMÁGENES CUANDO INTERACTUAMOS CON EL PAGINADOR
 $(".dataTables_paginate").click(function(){
 
 	cargarImagenes();
+	if($(".perfilUsuario").val() != "Administrador"){
+
+		$('.btnEliminarProducto').remove();
+
+	}
 
 })
 
@@ -125,6 +213,11 @@ $("input[aria-controls='DataTables_Table_0']").focus(function(){
 		event.preventDefault();
 
 		cargarImagenes();
+		if($(".perfilUsuario").val() != "Administrador"){
+
+			$('.btnEliminarProducto').remove();
+
+		}
 
 	})
 
@@ -139,6 +232,12 @@ $("select[name='DataTables_Table_0_length']").change(function(){
 
 	cargarImagenes();
 
+	if($(".perfilUsuario").val() != "Administrador"){
+
+		$('.btnEliminarProducto').remove();
+
+	}
+
 })
 
 /*=============================================
@@ -148,6 +247,14 @@ CARGAMOS LAS IMÁGENES CUANDO INTERACTUAMOS CON EL FILTRO DE ORDENAR
 $(".sorting").click(function(){
 
 	cargarImagenes();
+	if($(".perfilUsuario").val() != "Administrador"){
+
+		$('.btnEliminarProducto').remove();
+
+	}
+
+
+
 
 })
 

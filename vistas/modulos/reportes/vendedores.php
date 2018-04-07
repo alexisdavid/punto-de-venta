@@ -41,6 +41,7 @@ $noRepetirNombres = array_unique($arrayVendedores);
 ?>
 
 
+
 <!--=====================================
 VENDEDORES
 ======================================-->
@@ -78,6 +79,7 @@ var bar = new Morris.Bar({
     foreach($noRepetirNombres as $value){
 
       echo "{y: '".$value."', a: '".$sumaTotalVendedores[$value]."'},";
+
 
     }
 

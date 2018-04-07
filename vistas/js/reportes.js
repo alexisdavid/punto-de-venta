@@ -32,11 +32,14 @@ $('#daterange-btn2').daterangepicker(
   function (start, end) {
     $('#daterange-btn2 span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 
-    var fechaInicial = start.format('YYYY-M-D');
+    var fechaInicial = start.format('YYYY-MM-DD');
 
-    var fechaFinal = end.format('YYYY-M-D');
+    var fechaFinal = end.format('YYYY-MM-DD');
 
     var capturarRango = $("#daterange-btn2 span").html();
+
+
+
 
     
    

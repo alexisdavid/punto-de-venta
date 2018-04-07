@@ -76,7 +76,7 @@
 
           </div>
 
-           <div class="col-md-6 col-xs-12">
+           <div class="col-md-12 col-xs-12">
              
             <?php
 
@@ -86,26 +86,17 @@
 
            </div>
 
-            <div class="col-md-6 col-xs-12">
-             
-            <?php
+          <div class="col-md-12 col-xs-12">
+            
 
-            include "reportes/vendedores.php";
+              <?php
 
-            ?>
-
-           </div>
-
-           <div class="col-md-6 col-xs-12">
-             
-            <?php
-
-            include "reportes/compradores.php";
+            include "cuentasxpagar.php";
 
             ?>
 
-           </div>
-          
+          </div>
+   
         </div>
 
       </div>
