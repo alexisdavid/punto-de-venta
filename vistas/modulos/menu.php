@@ -62,7 +62,7 @@
         		echo '
             <li class="treeview">
                 <a>
-                    <i class="fa fa-list-ul"></i> <span ">Ventas</span>
+                    <i class="fa fa-dollar"></i> <span ">Ventas</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -82,6 +82,27 @@
                 </ul>
             </li>';
         }
+
+        if($_SESSION["perfil"] =="Administrador"){
+
+                echo '
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-list"></i> <span ">FACTURACION</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" >
+                    <li><a href="proveedores"><i class="fa fa-circle"></i> Proveedores</a></li>
+                    <li><a href="facturas"><i class="fa fa-circle"></i>Facturas</a></li>';
+            
+
+         }
+        
+
+
+
         ?>
         </ul>
     </section>

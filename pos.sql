@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-04-2018 a las 02:03:51
+-- Tiempo de generación: 15-04-2018 a las 06:38:16
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -49,7 +49,7 @@ INSERT INTO `categorias` (`id`, `categoria`, `fecha`) VALUES
 (8, 'Catalizadores', '2018-03-12 14:49:32'),
 (9, 'Flexibles', '2018-03-12 14:49:47'),
 (10, 'Deportivos', '2018-03-15 00:39:54'),
-(13, 'prueba', '2018-03-17 17:06:35');
+(13, 'SILENCIADORES FORD', '2018-04-02 00:06:48');
 
 -- --------------------------------------------------------
 
@@ -75,10 +75,38 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nombre`, `rfc`, `email`, `telefono`, `direccion`, `codigopostal`, `compras`, `ultima_compra`, `fecha`) VALUES
-(1, 'jesus duarte', 'DUCJ721121MMA', 'alexisduarte1512@gmail.com', '(222) 222-2222', 'ALFREDO V. BONFIL', '77560', 0, '0000-00-00 00:00:00', '2018-04-01 23:28:39'),
-(2, 'Alexis Duarte', 'duga911215HCLRR', 'alexisduarte1512@hotmail.com', '(998) 166-2004', 'alfredo v. bonfil cancun qroo', '77560', 0, '2018-04-01 17:19:33', '2018-04-01 22:38:05'),
-(3, 'marcos antonio', 'dugma1234', 'sjdjdf@jjfjf.com', '(111) 111-1111', '112sdff', '77560', 2, '2018-04-01 18:55:17', '2018-04-01 23:55:17'),
-(4, 'prueba', 'prueba', 'prueba@gmail.com', '(111) 111-1111', 'prueba', '77560', 0, '2018-04-01 17:37:06', '2018-04-01 22:38:14');
+(7, 'alexis', 'duga911215clrr', 'alexisduarte1512@gmail.com', '(998) 166-2004', 'jsjsjsj', '99192', 4, '2018-04-08 18:28:27', '2018-04-08 23:28:27'),
+(8, 'jesus duarte', 'DUGJ971213MD', 'sjdjdf@jjfjf.com', '(111) 111-1111', 'sdf333', '77560', 2, '2018-04-08 21:49:32', '2018-04-09 02:49:32');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facturas`
+--
+
+CREATE TABLE `facturas` (
+  `id` int(11) NOT NULL,
+  `id_proveedor` text COLLATE utf8_spanish2_ci NOT NULL,
+  `folio` text COLLATE utf8_spanish2_ci NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `abono` int(11) NOT NULL,
+  `saldo` int(11) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `facturas`
+--
+
+INSERT INTO `facturas` (`id`, `id_proveedor`, `folio`, `cantidad`, `abono`, `saldo`, `fecha`) VALUES
+(1, 'DAVALOS', '11122', 3000, 1000, 0, '2018-04-09 02:43:40'),
+(2, 'emsa', 's2344', 1000, 500, 0, '2018-04-09 02:44:10'),
+(3, 'infra', 'd245544', 2000, 1000, 0, '2018-04-14 15:51:29'),
+(4, 'DAVALOS', '2344556', 4594, 594, 0, '2018-04-15 03:00:03'),
+(5, 'DAVALOS', '35557754', 5000, 1000, 0, '2018-04-15 03:02:49'),
+(6, 'DAVALOS', '35557754', 5000, 1000, 0, '2018-04-15 03:02:55'),
+(7, 'emsa', '233445', 2000, 300, 0, '2018-04-15 03:03:21'),
+(13, 'DAVALOS', '232334', 8500, 6000, 2500, '2018-04-15 04:33:18');
 
 -- --------------------------------------------------------
 
@@ -105,16 +133,16 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `id_categoria`, `codigo`, `descripcion`, `imagen`, `stock`, `codigo_proveedor`, `precio_compra`, `precio_venta`, `ventas`, `fecha`) VALUES
-(1, 1, '101', 'SIL UNIVERSAL  REDONDO 4 CILINDROS', 'vistas/img/productos/default/anonymous.png', 18, 's-614', 253, 600, 18, '2018-04-02 00:01:13'),
-(2, 1, '102', 'SIL UNIVERSAL  REDONDO 6  CILINDROS', 'vistas/img/productos/default/anonymous.png', 10, 'S-618', 253, 700, 2, '2018-04-01 23:32:11'),
-(3, 1, '103', 'SIL UNIVERSAL  REDONDO 6 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-621', 283.26, 283.26, 0, '2018-03-14 01:29:48'),
-(4, 1, '104', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-624', 302.42, 302.42, 0, '2018-03-14 01:29:48'),
-(5, 1, '105', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-626', 321.6, 321.6, 0, '2018-03-14 01:29:48'),
-(6, 1, '106', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-628', 382.6, 382.6, 0, '2018-03-14 01:29:48'),
-(7, 1, '107', 'SIL UNIVERSAL  REDONDO LINEA 600', 'vistas/img/productos/default/anonymous.png', 0, 'S-631', 383.1, 383.1, 0, '2018-03-14 01:29:48'),
-(8, 1, '108', 'SIL UNIVERSAL  ECONOMICO', 'vistas/img/productos/default/anonymous.png', 0, 'S-3614-LL', 208.85, 208.85, 0, '2018-03-14 01:29:48'),
-(9, 1, '109', 'SIL UNIVERSAL  HUECO 18', 'vistas/img/productos/default/anonymous.png', 0, 'S-3618-H', 236.03, 236.03, 0, '2018-03-14 02:00:23'),
-(10, 1, '110', 'SIL UNIVERSAL  ECONOMICO', 'vistas/img/productos/default/anonymous.png', 0, 'S-3618-LL', 228.51, 228.51, 0, '2018-03-14 01:29:48'),
+(1, 1, '101', 'SIL UNIVERSAL  REDONDO 4 CILINDROS', 'vistas/img/productos/default/anonymous.png', 8, 's-614', 253, 600, 4, '2018-04-09 02:49:32'),
+(2, 1, '102', 'SIL UNIVERSAL  REDONDO 6  CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-618', 253, 700, 0, '2018-04-07 16:31:43'),
+(3, 1, '103', 'SIL UNIVERSAL  REDONDO 6 CILINDROS', 'vistas/img/productos/default/anonymous.png', 5, 'S-621', 283, 396, 0, '2018-04-07 16:35:21'),
+(4, 1, '104', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 18, 'S-624', 302, 422, 0, '2018-04-06 04:59:34'),
+(5, 1, '105', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 7, 'S-626', 321, 449, 0, '2018-04-06 04:59:29'),
+(6, 1, '106', 'SIL UNIVERSAL  REDONDO 8 CILINDROS', 'vistas/img/productos/default/anonymous.png', 5, 'S-628', 382, 534, 0, '2018-04-06 04:59:26'),
+(7, 1, '107', 'SIL UNIVERSAL  REDONDO LINEA 600', 'vistas/img/productos/default/anonymous.png', 5, 'S-631', 383, 536, 1, '2018-04-07 01:44:34'),
+(8, 1, '108', 'SIL UNIVERSAL  ECONOMICO', 'vistas/img/productos/default/anonymous.png', 8, 'S-3614-LL', 208, 291, 0, '2018-04-06 04:59:18'),
+(9, 1, '109', 'SIL UNIVERSAL HUECO 18', 'vistas/img/productos/default/anonymous.png', 6, 'S-3618-H', 236, 330, 0, '2018-04-06 04:59:13'),
+(10, 1, '110', 'SIL UNIVERSAL ECONOMICO', 'vistas/img/productos/default/anonymous.png', 4, 'S-3618-LL', 228, 319, 0, '2018-04-06 04:59:05'),
 (11, 1, '111', 'SIL OVALADO UNIVERSAL  4 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-713-LC', 237.03, 237.03, 0, '2018-03-14 01:29:48'),
 (12, 1, '112', 'SIL OVALADO UNIVERSAL  4 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-713-LL', 237.03, 237.03, 0, '2018-03-14 01:29:48'),
 (13, 1, '113', 'SIL OVALADO UNIVERSAL  6 CILINDROS', 'vistas/img/productos/default/anonymous.png', 0, 'S-718-LC', 258.2, 258.2, 0, '2018-03-14 01:29:48'),
@@ -261,7 +289,29 @@ INSERT INTO `productos` (`id`, `id_categoria`, `codigo`, `descripcion`, `imagen`
 (154, 9, '923', 'FLEXIBLE DE 2 X 8 S/BOQ', 'vistas/img/productos/default/anonymous.png', 0, 'FLX-2X8 SB', 236.99, 236.99, 0, '2018-03-14 01:29:48'),
 (155, 9, '924', 'FLEXIBLE DE 3 X 6 C/BOQ', 'vistas/img/productos/default/anonymous.png', 0, 'FLX-3X6 CB', 318.83, 318.83, 0, '2018-03-14 02:16:35'),
 (156, 9, '925', 'FLEXIBLE DE 3 X 6 S/BOQ', 'vistas/img/productos/default/anonymous.png', 0, 'FLX-3X6 SB', 279.04, 279.04, 0, '2018-03-14 01:29:48'),
-(157, 9, '926', 'FLEXIBLE PARA STRATUS', 'vistas/img/productos/default/anonymous.png', 0, 'FLX-STRATUS', 376, 1000, 3, '2018-04-01 18:08:37');
+(157, 9, '926', 'FLEXIBLE PARA STRATUS', 'vistas/img/productos/default/anonymous.png', 0, 'FLX-STRATUS', 376, 1000, 0, '2018-04-02 00:20:08');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedor`
+--
+
+CREATE TABLE `proveedor` (
+  `id` int(11) NOT NULL,
+  `nombre` text COLLATE utf8_spanish2_ci NOT NULL,
+  `email` text COLLATE utf8_spanish2_ci NOT NULL,
+  `telefono` text COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`id`, `nombre`, `email`, `telefono`) VALUES
+(2, 'DAVALOS', 'davalos@gmail.com', '(222) 222-2222'),
+(7, 'emsa', 'emsa@gmail.com', '(998) 876-5443'),
+(9, 'infra', 'infra@gmil.com', '(092) 829-1828');
 
 -- --------------------------------------------------------
 
@@ -286,8 +336,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `usuario`, `password`, `perfil`, `foto`, `estado`, `ultimo_login`, `fecha`) VALUES
-(1, 'Administrador', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 'vistas/img/usuarios/admin/718.jpg', 1, '2018-04-01 14:41:27', '2018-04-01 19:41:27'),
-(59, 'Ana Gonzalez', 'ana', '$2a$07$asxx54ahjppf45sd87a5auzGfz9GaOjSPJ5jEDpHii9vSQEEqY1Zm', 'Vendedor', 'vistas/img/usuarios/ana/260.png', 1, '2018-04-01 13:07:07', '2018-04-01 18:07:07');
+(1, 'Administrador', 'admin', '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG', 'Administrador', 'vistas/img/usuarios/admin/718.jpg', 1, '2018-04-14 23:14:01', '2018-04-15 04:14:02'),
+(59, 'Ana Gonzalez', 'ana', '$2a$07$asxx54ahjppf45sd87a5auzGfz9GaOjSPJ5jEDpHii9vSQEEqY1Zm', 'Vendedor', 'vistas/img/usuarios/ana/260.png', 1, '2018-04-08 11:27:34', '2018-04-08 16:27:34'),
+(60, 'alexis', 'alex', '$2a$07$asxx54ahjppf45sd87a5auNvGRBP67HwteI1werOGGwt8t1BsO7QW', 'Especial', 'vistas/img/usuarios/alex/924.jpg', 1, '2018-04-08 11:28:17', '2018-04-08 16:28:17'),
+(61, 'vendedor', 'vendedor', '$2a$07$asxx54ahjppf45sd87a5au5.7VFyYe8OhcuclH1FmEkVdrpavH75m', 'Vendedor', 'vistas/img/usuarios/vendedor/256.jpg', 1, '2018-04-08 21:51:38', '2018-04-09 02:51:38');
 
 -- --------------------------------------------------------
 
@@ -313,8 +365,11 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `codigo`, `id_cliente`, `id_vendedor`, `productos`, `impuesto`, `neto`, `total`, `metodo_pago`, `fecha`) VALUES
-(21, 10001, 3, 1, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"19\",\"precio\":\"600\",\"total\":\"600\"}]', 96, 600, 696, 'CH-123456', '2018-04-01 23:30:15'),
-(23, 10002, 3, 1, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"18\",\"precio\":\"600\",\"total\":\"600\"}]', 80, 500, 580, 'Efectivo', '2018-04-01 23:55:17');
+(45, 10001, 7, 59, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"10\",\"precio\":\"600\",\"total\":\"600\"}]', 96, 600, 696, 'Efectivo', '2018-04-06 05:21:00'),
+(47, 10003, 7, 59, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"9\",\"precio\":\"600\",\"total\":\"600\"}]', 0, 600, 600, 'CH-22344', '2018-04-06 13:52:24'),
+(50, 10004, 8, 1, '[{\"id\":\"7\",\"descripcion\":\"SIL UNIVERSAL  REDONDO LINEA 600\",\"cantidad\":\"1\",\"stock\":\"5\",\"precio\":\"536\",\"total\":\"536\"}]', 85.76, 536, 621.76, 'Efectivo', '2018-04-07 01:44:34'),
+(53, 10005, 7, 1, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"9\",\"precio\":\"600\",\"total\":\"600\"}]', 0, 600, 600, 'Efectivo', '2018-04-08 23:28:27'),
+(54, 10006, 8, 1, '[{\"id\":\"1\",\"descripcion\":\"SIL UNIVERSAL  REDONDO 4 CILINDROS\",\"cantidad\":\"1\",\"stock\":\"8\",\"precio\":\"600\",\"total\":\"600\"}]', 0, 600, 600, 'Efectivo', '2018-04-09 02:49:32');
 
 --
 -- Índices para tablas volcadas
@@ -333,9 +388,21 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -364,7 +431,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `facturas`
+--
+ALTER TABLE `facturas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -373,16 +446,22 @@ ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

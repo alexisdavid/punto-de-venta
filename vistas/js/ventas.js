@@ -211,6 +211,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
           	$(".nuevoProducto").append(
 
+
           	'<div class="row" style="padding:5px 15px">'+
 
 			  '<!-- Descripción del producto -->'+

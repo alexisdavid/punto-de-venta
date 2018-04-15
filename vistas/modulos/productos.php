@@ -111,7 +111,7 @@ MODAL AGREGAR PRODUCTO
 
                 <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" required>
                   
-                  <option value="">Selecionar categoría</option>
+                  <option value="">Selecionar Categoria</option>
 
                   <?php
 
