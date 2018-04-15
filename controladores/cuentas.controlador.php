@@ -284,12 +284,16 @@ class ControladorCuentas{
 
 				$antiguoSaldo = ModeloProveedor::mdlMostrarFacturas($tabla, $item, $valor);
 				$antiguoSaldo2 =  json_decode($antiguoSaldo["saldo"], true);
+				$abonoBd = ModeloProveedor::mdlMostrarFacturas($tabla, $item, $valor);
+				$abonoBd2 = json_decode($antiguoSaldo["abono"], true);
 
 				$nuevoAbono=$_POST["abono"];
+
+				$abonoTotal = $abonoBd2 + $nuevoAbono;
 				$saldo2 = $antiguoSaldo2 - $nuevoAbono;
 
 
-				$datos = array("abono"=>$_POST["abono"],
+				$datos = array("abono"=>$abonoTotal,
 								"folio"=>$_POST["antiguoFolio"],
 							   "saldo"=>$saldo2);
 
