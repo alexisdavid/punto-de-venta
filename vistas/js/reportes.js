@@ -93,9 +93,9 @@ $(".daterangepicker.opensright .ranges li").on("click", function(){
     }else if(mes < 10 && dia > 10){
 
       
-      var fechaInicial = año+"-0"+mes+dia;
+      var fechaInicial = año+"-0"+mes+"-"+dia;
 
-        var fechaFinal = año+"-0"+mes+dia;
+        var fechaFinal = año+"-0"+mes+"-"+dia;
 
     }else if(mes < 10 && dia < 10){
 

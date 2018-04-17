@@ -27,6 +27,7 @@
             <li class="header">Menú de Navegación</li>
 
 
+
          <?php
 	           if($_SESSION["perfil"] =="Administrador"){
 
@@ -37,6 +38,7 @@
 			                <a href="usuarios"><i class="fa fa-user"></i> <span >Usuarios</span></a>
 			            </li>';
 	        }
+
 
          if($_SESSION["perfil"] =="Administrador" || $_SESSION["perfil"] =="Especial"){
 
@@ -57,9 +59,9 @@
                 <a href="clientes"><i class="fa fa-users"></i> <span >Clientes</span></a>
             </li>';
         }
-        	if($_SESSION["perfil"] =="Administrador" || $_SESSION["perfil"] =="Vendedor"){
+        if($_SESSION["perfil"] =="Administrador" || $_SESSION["perfil"] =="Vendedor"){
 
-        		echo '
+                echo '
             <li class="treeview">
                 <a>
                     <i class="fa fa-dollar"></i> <span ">Ventas</span>
@@ -74,7 +76,7 @@
 
           if($_SESSION["perfil"] =="Administrador"){
 
-          	echo '
+            echo '
 
                     <li><a href="reportes"><i class="fa fa-circle"></i> Reporte de Ventas</a></li>';
                 }
@@ -82,6 +84,7 @@
                 </ul>
             </li>';
         }
+        	
 
         if($_SESSION["perfil"] =="Administrador"){
 
@@ -99,11 +102,11 @@
             
 
          }
-        
-
 
 
         ?>
+
         </ul>
+
     </section>
 </aside>
