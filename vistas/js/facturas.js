@@ -17,24 +17,6 @@ if(window.matchMedia("(max-width:767px)").matches){
 
 	var table = $('.tablaFacturas').DataTable({
 
-		// "ajax":"ajax/datatable-productos.ajax.php",
-		// "columnDefs": [
-
-		// 	{
-		// 		"targets": -10,
-		// 		 "data": null,
-		// 		 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
-
-		// 	},
-
-		// 	{
-		// 		"targets": -1,
-		// 		 "data": null,
-		// 		 "defaultContent": botonesTabla
-
-		// 	}
-
-		// ],
 
 		"language": {
 
@@ -70,31 +52,7 @@ if(window.matchMedia("(max-width:767px)").matches){
 
 	var table = $('.tablaFacturas').DataTable({
 
-		// "ajax":"ajax/datatable-productos.ajax.php",
-		// "columnDefs": [
-
-		// 	{
-		// 		"targets": -10,
-		// 		 "data": null,
-		// 		 "defaultContent": '<img class="img-thumbnail imgTabla" width="40px">'
-
-		// 	},
-
-		// 	// {
-		// 	// 	"targets": -6,
-		// 	// 	 "data": null,
-		// 	// 	 "defaultContent": '<div class="btn-group"><button class="btn btn-success Stock"></button></div>'
-
-		// 	// },
-
-		// 	{
-		// 		"targets": -1,
-		// 		 "data": null,
-		// 		 "defaultContent": botonesTabla
-
-		// 	}
-
-		// ],
+		
 
 		"language": {
 
@@ -152,13 +110,14 @@ $(".tablaFacturas tbody").on("click", "button.btnAbono", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-			console.log("respuesta", respuesta);
+			// console.log("respuesta", respuesta);
 			
 			$("#idf").val(respuesta["id"]);
 			
 			$("#antiguoFolio").html(respuesta["folio"]);
 			$("#antiguoFolio").val(respuesta["folio"]);
-		
+			$("#antiguoSaldo").html(respuesta["saldo"]);
+			$("#antiguoSaldo").val(respuesta["saldo"]);
 
 			
 

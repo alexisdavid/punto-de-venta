@@ -331,6 +331,19 @@ MODAL AGREGAR ABONO
               </div>
 
             </div>
+             <!-- ENTRADA PARA LA CANTIDAD -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span> 
+
+                <input type="text" class="form-control input-lg" id="antiguoSaldo" name="antiguoSaldo" readonly  required>
+
+              </div>
+
+            </div>
 
 
              <!-- ENTRADA PARA ABONO -->
@@ -379,12 +392,6 @@ MODAL AGREGAR ABONO
   </div>
 
 </div>
-
-
-
-
-
-
 
 
 
@@ -458,20 +465,15 @@ MODAL AGREGAR ABONO
                    
                     <td>'.($key+1).'</td> 
                     <td class="text-uppercase">'.$value["id_proveedor"].'</td>
-                     <td class="text-uppercase">'.$value["folio"].'</td>
-                      <td class="text-uppercase">'.$value["cantidad"].'</td>
+                    <td class="text-uppercase">'.$value["folio"].'</td>
+                    <td class="text-uppercase">'.$value["cantidad"].'</td>
                        
-                        <td class="text-uppercase">'.$value["saldo"].'</td>
-                         <td class="text-uppercase">'.$value["fecha"].'</td>
+                    <td class="text-uppercase">'.$value["saldo"].'</td>
+                    <td class="text-uppercase">'.$value["fecha"].'</td>
 
                     <td>
 
-                      <div class="btn-group">
-
-';
-
-
-
+                      <div class="btn-group">';
 
                      if($_SESSION["perfil"] =="Administrador"){
 

@@ -13,21 +13,10 @@ $productos = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
   <div class="box-header with-border">
 
-    <h3 class="box-title">Recently Added Products</h3>
+    <h3 class="box-title">Productos agregados recientemente</h3>
 
     <div class="box-tools pull-right">
 
-      <button type="button" class="btn btn-box-tool" data-widget="collapse">
-
-        <i class="fa fa-minus"></i>
-
-      </button>
-
-      <button type="button" class="btn btn-box-tool" data-widget="remove">
-
-        <i class="fa fa-times"></i>
-
-      </button>
 
     </div>
 
